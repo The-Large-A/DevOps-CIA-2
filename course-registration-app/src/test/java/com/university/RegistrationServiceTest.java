@@ -139,4 +139,38 @@ class RegistrationServiceTest {
         assertFalse(anotherStudent.isRegistered("CS101"));
         assertEquals(0, anotherStudent.getTotalCredits());
     }
+
+    @Test
+    void shouldRejectCaseInsensitiveDuplicateRegistrationLowercase() {
+        Student testStudent = new Student("S991", "TestUser1");
+        Course courseOriginal = new Course("CS101", "Intro to CS", 4, 30, true, null);
+
+        assertTrue(service.register(testStudent, courseOriginal));
+        assertEquals(4, testStudent.getTotalCredits());
+        assertEquals(1, courseOriginal.getCurrentEnrollment());
+
+        Course courseDuplicateLower = new Course("cs101", "Intro to CS", 4, 30, true, null);
+        boolean result = service.register(testStudent, courseDuplicateLower);
+
+        assertFalse(result, "Registration with lowercase duplicate course code 'cs101' must be rejected.");
+        assertFalse(testStudent.isRegistered("cs101"));
+        assertEquals(4, testStudent.getTotalCredits(), "Total credits must remain unchanged after rejection.");
+        assertEquals(1, courseOriginal.getCurrentEnrollment(), "Course enrollment count must remain unchanged.");
+    }
+
+    @Test
+    void shouldRejectCaseInsensitiveDuplicateRegistrationMixedCase() {
+        Student testStudent = new Student("S992", "TestUser2");
+        Course courseOriginal = new Course("MATH101", "Calculus", 3, 30, true, null);
+
+        assertTrue(service.register(testStudent, courseOriginal));
+        assertEquals(3, testStudent.getTotalCredits());
+
+        Course courseDuplicateMixed = new Course("Math101", "Calculus", 3, 30, true, null);
+        boolean result = service.register(testStudent, courseDuplicateMixed);
+
+        assertFalse(result, "Registration with mixed-case duplicate course code 'Math101' must be rejected.");
+        assertFalse(testStudent.isRegistered("Math101"));
+        assertEquals(3, testStudent.getTotalCredits(), "Student credits must remain unchanged.");
+    }
 }

@@ -40,19 +40,29 @@ public class Student {
     }
 
     public void addCompletedPrerequisite(String courseCode) {
-        completedPrerequisites.add(courseCode);
+        if (courseCode != null) {
+            completedPrerequisites.add(courseCode.toUpperCase());
+        }
     }
 
     public boolean hasCompletedPrerequisite(String courseCode) {
-        return completedPrerequisites.contains(courseCode);
+        return courseCode != null && completedPrerequisites.contains(courseCode.toUpperCase());
     }
 
     public boolean isRegistered(String courseCode) {
-        return registeredCourses.contains(courseCode);
+        if (courseCode == null) return false;
+        for (String code : registeredCourses) {
+            if (code.equalsIgnoreCase(courseCode)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addRegistration(String courseCode, int credits) {
-        registeredCourses.add(courseCode);
-        totalCredits += credits;
+        if (courseCode != null) {
+            registeredCourses.add(courseCode.toUpperCase());
+            totalCredits += credits;
+        }
     }
 }
