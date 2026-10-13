@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'system-maven' 
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -10,12 +14,10 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                // Execute Maven from the repository root
                 sh 'mvn clean test -U'
             }
             post {
                 always {
-                    // Publish JUnit reports from the child module location
                     junit 'course-registration-app/target/surefire-reports/TEST-*.xml'
                 }
             }
@@ -23,12 +25,10 @@ pipeline {
 
         stage('Package') {
             steps {
-                // Package the application into the jar
                 sh 'mvn package -DskipTests'
             }
             post {
                 success {
-                    // Archive packaged artifact if tests pass
                     archiveArtifacts artifacts: 'course-registration-app/target/*.jar', fingerprint: true
                 }
             }
