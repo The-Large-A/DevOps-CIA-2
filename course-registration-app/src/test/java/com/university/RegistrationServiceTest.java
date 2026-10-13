@@ -13,7 +13,7 @@ class RegistrationServiceTest {
     @BeforeEach
     void setUp() {
         service = new RegistrationService();
-        student = new Student("S101", "Anita");
+        student = new Student("S101", "Abu");
     }
 
     @Test
@@ -131,7 +131,7 @@ class RegistrationServiceTest {
         Course course = new Course("CS101", "Intro to CS", 4, 1, true, null);
         course.incrementEnrollment(); // Fill the single seat (1/1)
 
-        Student anotherStudent = new Student("S102", "Bob");
+        Student anotherStudent = new Student("S102", "Aarav");
         boolean success = service.register(anotherStudent, course);
 
         assertFalse(success, "Registration should be rejected when the course is at full capacity.");
