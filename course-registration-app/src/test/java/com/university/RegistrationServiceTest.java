@@ -150,4 +150,31 @@ class RegistrationServiceTest {
         assertFalse(result);
         assertFalse(student.isRegistered("CS301"));
     }
+
+    @Test
+    void testRegisterWhenOneSeatRemaining() {
+        Course course = new Course("CS101", "Intro to CS", 4, 1, true, null);
+        Student student = new Student("S101", "Anita");
+        
+        boolean success = service.register(student, course);
+
+        assertTrue(success, "Registration should succeed when exactly one seat remains.");
+        assertEquals(1, course.getCurrentEnrollment());
+        assertTrue(student.isRegistered("CS101"));
+        assertEquals(4, student.getTotalCredits());
+    }
+
+    @Test
+    void testRegisterWhenCourseAtCapacity() {
+        Course course = new Course("CS101", "Intro to CS", 4, 1, true, null);
+        course.incrementEnrollment(); // Fill the single seat (1/1)
+
+        Student student = new Student("S102", "Bob");
+        boolean success = service.register(student, course);
+
+        assertFalse(success, "Registration should be rejected when the course is at full capacity.");
+        assertEquals(1, course.getCurrentEnrollment());
+        assertFalse(student.isRegistered("CS101"));
+        assertEquals(0, student.getTotalCredits());
+    }
 }
