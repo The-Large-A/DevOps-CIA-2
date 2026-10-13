@@ -11,7 +11,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 // Execute Maven from the repository root
-                sh 'mvn clean test'
+                sh 'mvn clean test -U'
             }
             post {
                 always {
