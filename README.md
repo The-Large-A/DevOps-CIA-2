@@ -62,6 +62,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ git push -u origin main
 fatal: 'origin' does not appear to be a git repository
 
+
 ```
 
 ## Task 2: File Setup and Writing POM Files
@@ -117,6 +118,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Course Registration Parent POM                                     [pom]
 [INFO] Course Registration Application                                    [jar]
 
+
 ```
 
 ### Maven Clean Test:
@@ -145,6 +147,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] --- clean:3.2.0:clean (default-clean) @ course-registration-app ---
 [INFO] Deleting /home/snucse/Downloads/Student-Starter/course-registration-app/target
 ...
+
 
 ```
 
@@ -189,6 +192,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Finished at: 2026-10-13T09:30:08+05:30
 [INFO] ------------------------------------------------------------------------
 
+
 ```
 
 ### Maven Package Success and Task-2 Commit:
@@ -206,6 +210,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
  rename {src => course-registration-app/src}/test/java/com/university/RegistrationServiceTest.java (100%)
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ ls
 course-registration-app  pom.xml  src
+
 
 ```
 
@@ -242,6 +247,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Finished at: 2026-10-13T10:13:29+05:30
 [INFO] ------------------------------------------------------------------------
 
+
 ```
 
 ## Task 4: Credit Limit Change (Question Set A) & Case-Insensitive Duplicate Registration (Question Set D)
@@ -273,6 +279,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Finished at: 2026-10-13T10:15:31+05:30
 [INFO] ------------------------------------------------------------------------
 
+
 ```
 
 ### Rerun Clean Test:
@@ -299,6 +306,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Total time:  0.786 s
 [INFO] Finished at: 2026-10-13T11:48:22+05:30
 [INFO] ------------------------------------------------------------------------
+
 
 ```
 
@@ -333,6 +341,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
  1 file changed, 43 insertions(+)
  create mode 100644 Jenkinsfile
 
+
 ```
 
 ## Task 6: Kubernetes Setup & YAML Files
@@ -347,6 +356,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
  2 files changed, 33 insertions(+)
  create mode 100644 deployment.yaml
  create mode 100644 service.yaml
+
 
 ```
 
@@ -365,6 +375,7 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ ku
 NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP        7d22h
 nginx-service   NodePort    10.106.224.220   <none>        80:31704/TCP   22s
+
 
 ```
 
@@ -386,6 +397,7 @@ nginx-deployment-75cc477c85-4jmhb   1/1     Running   0          21s
 nginx-deployment-75cc477c85-cvjjk   1/1     Running   0          5m17s
 nginx-deployment-75cc477c85-xvnvp   1/1     Running   0          93s
 
+
 ```
 
 ## Task 7: Setup And Execution Instructions
@@ -400,6 +412,7 @@ nginx-deployment-75cc477c85-xvnvp   1/1     Running   0          93s
   kubectl apply -f deployment.yaml 
   kubectl apply -f service.yaml
   
+  
   ```
 
 ### Git Evidence:
@@ -408,7 +421,17 @@ nginx-deployment-75cc477c85-xvnvp   1/1     Running   0          93s
 
 * **Commit History:**
 
-  * `9491515` (HEAD -> feature/course-registration-refactor) Task 6: YAML files
+  * `076720b` (HEAD -> feature/course-registration-refactor) Updated Readme with actual Question set qs implemented
+
+  * `e70d701` Question Set D- Bug Fix
+
+  * `8b9e344` Question Set D
+
+  * `629c609` Final commit
+
+  * `b1856e4` Added Final README
+
+  * `9491515` Task 6: YAML files
 
   * `d2b9c63` Task 5: Jenkinsfile Commit
 
@@ -474,6 +497,7 @@ nginx-deployment-75cc477c85-xvnvp   1/1     Running   0          93s
 [INFO] Finished at: 2026-10-13T10:55:26+05:30
 [INFO] ------------------------------------------------------------------------
 
+
 ```
 
 ## Jenkins Pipeline Explanation
@@ -521,6 +545,7 @@ pipeline {
    }
 }
 
+
 ```
 
 * Jenkins uses Linux `sh` steps to execute stages. It publishes test reports via `junit`.
@@ -556,6 +581,7 @@ spec:
        ports:
        - containerPort: 80
 
+
 ```
 
 ### service.yaml:
@@ -573,14 +599,17 @@ spec:
   - port: 80
     targetPort: 80
 
+
 ```
 
 ## Change Summary and Limitations
 
 * **Bug Resolved:** Capacity check error fixed.
 
-* **Change Request Completed:** 
+* **Change Request Completed:**
+
   * Capacity increased from 20 to 24.
+
   * Case-insensitive duplicate registration guards implemented.
 
 * **Full Pipeline Set Up:** Maven, Jenkins, and Kubernetes fully configured for the project.
