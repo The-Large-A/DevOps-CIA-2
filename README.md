@@ -1,10 +1,10 @@
 # DevOps CIA-2 Report
-**Name:** Aarav Suriyanarayanan  
+
+**Name:** Aarav Suriyanarayanan
+
 **ID:** 23011102004
 
 *(Note: Commit messages are distributed across all tasks)*
-
----
 
 ## Task 1: Initial Repo Setup
 
@@ -61,9 +61,8 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
  7 files changed, 412 insertions(+), 412 deletions(-)
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ git push -u origin main
 fatal: 'origin' does not appear to be a git repository
-```
 
----
+```
 
 ## Task 2: File Setup and Writing POM Files
 
@@ -117,9 +116,11 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] 
 [INFO] Course Registration Parent POM                                     [pom]
 [INFO] Course Registration Application                                    [jar]
+
 ```
 
 ### Maven Clean Test:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mvn clean test
 [INFO] Scanning for projects...
@@ -144,9 +145,11 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] --- clean:3.2.0:clean (default-clean) @ course-registration-app ---
 [INFO] Deleting /home/snucse/Downloads/Student-Starter/course-registration-app/target
 ...
+
 ```
 
 ### Clean Test Success and Maven Package:
+
 ```
 [INFO] --- surefire:3.2.5:test (default-test) @ course-registration-app ---
 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
@@ -185,9 +188,11 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Total time:  2.040 s
 [INFO] Finished at: 2026-10-13T09:30:08+05:30
 [INFO] ------------------------------------------------------------------------
+
 ```
 
 ### Maven Package Success and Task-2 Commit:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ git add .
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ git commit -m "Refactored default project repo into multi module Maven structure"
@@ -201,16 +206,17 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
  rename {src => course-registration-app/src}/test/java/com/university/RegistrationServiceTest.java (100%)
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ ls
 course-registration-app  pom.xml  src
-```
 
----
+```
 
 ## Task 3: RegistrationService.java Fix & Unit Tests
 
 * **RegistrationService.java Fix:** Implemented proper registration rules and validation logic.
+
 * **Added Required Unit Tests:** Expanded `RegistrationServiceTest.java` to thoroughly test validation edge cases.
 
 ### Maven Clean Test:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mvn clean test
 ...
@@ -235,15 +241,15 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Total time:  0.848 s
 [INFO] Finished at: 2026-10-13T10:13:29+05:30
 [INFO] ------------------------------------------------------------------------
+
 ```
 
----
-
-## Task 4: Credit Limit Change
+## Task 4: Credit Limit Change (Question Set A) & Case-Insensitive Duplicate Registration (Question Set D)
 
 * **Credit Limit Change:** Updated `MAX_CREDITS` from `20` to `24` inside `RegistrationService.java`.
 
 ### Rerunning Unit Tests:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mvn clean test
 ...
@@ -266,13 +272,40 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mv
 [INFO] Total time:  0.862 s
 [INFO] Finished at: 2026-10-13T10:15:31+05:30
 [INFO] ------------------------------------------------------------------------
+
 ```
 
----
+### Rerun Clean Test:
+
+```
+snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ mvn clean test
+...
+[INFO] Running com.university.RegistrationServiceTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in com.university.RegistrationServiceTest
+[INFO] Running com.university.CourseTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.university.CourseTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Course Registration Parent POM 1.0-SNAPSHOT:
+[INFO] Course Registration Parent POM ..................... SUCCESS [  0.057 s]
+[INFO] Course Registration Application .................... SUCCESS [  0.690 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.786 s
+[INFO] Finished at: 2026-10-13T11:48:22+05:30
+[INFO] ------------------------------------------------------------------------
+
+```
 
 ## Task 5: Creating Jenkinsfile
 
 ### Starting Minikube & Committing Jenkinsfile:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 [sudo] password for snucse:
@@ -299,13 +332,13 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
 [feature/course-registration-refactor d2b9c63] Task 5: Jenkinsfile Commit
  1 file changed, 43 insertions(+)
  create mode 100644 Jenkinsfile
-```
 
----
+```
 
 ## Task 6: Kubernetes Setup & YAML Files
 
 ### Service.yaml Creation and Commit:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ touch service.yaml
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ git add .
@@ -314,9 +347,11 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ gi
  2 files changed, 33 insertions(+)
  create mode 100644 deployment.yaml
  create mode 100644 service.yaml
+
 ```
 
 ### Apply Configs and Verify Deployment:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ kubectl apply -f deployment.yaml
 deployment.apps/nginx-deployment created
@@ -330,9 +365,11 @@ snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ ku
 NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP        7d22h
 nginx-service   NodePort    10.106.224.220   <none>        80:31704/TCP   22s
+
 ```
 
 ### Scaling and Self Healing:
+
 ```
 snucse@snucse-HP-Pro-Tower-400-G9-PCI-Desktop-PC:~/Downloads/Student-Starter$ kubectl scale deployment nginx-deployment --replicas=3
 deployment.apps/nginx-deployment scaled
@@ -348,35 +385,49 @@ NAME                                READY   STATUS    RESTARTS   AGE
 nginx-deployment-75cc477c85-4jmhb   1/1     Running   0          21s
 nginx-deployment-75cc477c85-cvjjk   1/1     Running   0          5m17s
 nginx-deployment-75cc477c85-xvnvp   1/1     Running   0          93s
-```
 
----
+```
 
 ## Task 7: Setup And Execution Instructions
 
 * **Build and Test:** `mvn clean test`
+
 * **Package:** `mvn package`
-* **Kubernetes Deployment:** 
-  ```bash
+
+* **Kubernetes Deployment:**
+
+  ```
   kubectl apply -f deployment.yaml 
   kubectl apply -f service.yaml
+  
   ```
 
 ### Git Evidence:
+
 * **Feature Branch Name:** `feature/course-registration-refactor`
+
 * **Commit History:**
+
   * `9491515` (HEAD -> feature/course-registration-refactor) Task 6: YAML files
+
   * `d2b9c63` Task 5: Jenkinsfile Commit
+
   * `6929bc6` Task 3: Indentation Mistake
+
   * `5300b37` Task 3: Fixed Mistake in new unit tests
+
   * `74fbd4c` Task 3: Resolved Error and added Unit Tests
+
   * `371db89` Refactored default project repo into multi module Maven structure
+
   * `cef2bff` Initial student assessment starter
 
 ### Maven Evidence:
+
 * **Parent-Child POM Structure:** Parent POM manages shared compiler settings and JUnit 5 dependency versions. Child module `course-registration-app` inherits configuration. Reactor successfully builds both modules.
 
 ### Build Results:
+
 ```
 [INFO] Course Registration Application                                    [jar]
 [INFO] 
@@ -422,14 +473,14 @@ nginx-deployment-75cc477c85-xvnvp   1/1     Running   0          93s
 [INFO] Total time:  0.788 s
 [INFO] Finished at: 2026-10-13T10:55:26+05:30
 [INFO] ------------------------------------------------------------------------
-```
 
----
+```
 
 ## Jenkins Pipeline Explanation
 
 ### Jenkinsfile:
-```groovy
+
+```
 pipeline {
    agent any
    stages {
@@ -469,18 +520,20 @@ pipeline {
        }
    }
 }
+
 ```
 
 * Jenkins uses Linux `sh` steps to execute stages. It publishes test reports via `junit`.
-* Sample command: `junit 'course-registration-app/target/surefire-reports/TEST-*.xml'`
-* It archives artifacts only on successful pipeline builds.
 
----
+* Sample command: `junit 'course-registration-app/target/surefire-reports/TEST-*.xml'`
+
+* It archives artifacts only on successful pipeline builds.
 
 ## Kubernetes Deployment Evidence
 
 ### deployment.yaml:
-```yaml
+
+```
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -502,10 +555,12 @@ spec:
        image: nginx:1.27
        ports:
        - containerPort: 80
+
 ```
 
 ### service.yaml:
-```yaml
+
+```
 apiVersion: v1
 kind: Service
 metadata:
@@ -517,16 +572,21 @@ spec:
  ports:
   - port: 80
     targetPort: 80
-```
 
----
+```
 
 ## Change Summary and Limitations
 
 * **Bug Resolved:** Capacity check error fixed.
-* **Change Request Completed:** Capacity increased from 20 to 24.
+
+* **Change Request Completed:** 
+  * Capacity increased from 20 to 24.
+  * Case-insensitive duplicate registration guards implemented.
+
 * **Full Pipeline Set Up:** Maven, Jenkins, and Kubernetes fully configured for the project.
 
 ### Limitations:
+
 * Done only on a local minikube environment.
+
 * Docker not used at all for the project.
