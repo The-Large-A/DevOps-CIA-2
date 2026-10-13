@@ -2,7 +2,7 @@ package com.university;
 
 public class RegistrationService {
 
-    private static final int MAX_CREDITS = 24;
+    private static final int MAX_CREDITS = 24; // Question Set A limit
 
     public boolean register(Student student, Course course) {
         if (student == null || course == null) {
@@ -17,11 +17,8 @@ public class RegistrationService {
             return false;
         }
 
-        // Case-insensitive duplicate check across all registered courses
-        for (String registeredCode : student.getRegisteredCourses()) {
-            if (registeredCode.equalsIgnoreCase(course.getCourseCode())) {
-                return false;
-            }
+        if (student.isRegistered(course.getCourseCode())) {
+            return false;
         }
 
         String prerequisite = course.getPrerequisite();
